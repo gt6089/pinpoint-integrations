@@ -1,0 +1,186 @@
+{
+  "fullName": "Williams Lockman",
+  "creationDate": "2024-06-27",
+  "displayName": "Williams Lockman",
+  "payroll": {
+    "additionalPensionContribution": null,
+    "timeSinceLastSalaryChange": null,
+    "salary": {
+      "monthlyPayment": null,
+      "payPeriod": null,
+      "yearlyPayment": null,
+      "payment": {
+        "currency": null
+      },
+      "activeEffectiveDate": null,
+      "payFrequency": null
+    },
+    "taxCode": null,
+    "entitlement": {
+      "Season ticket loans": {
+        "amount": null
+      },
+      "Cycle to work": {
+        "amount": null
+      },
+      "Company Car": {
+        "amount": null
+      },
+      "Childcare vouchers": {
+        "amount": null
+      },
+      "Lunch vouchers": {
+        "amount": null
+      }
+    },
+    "deduction": {
+      "Season ticket loans": {
+        "amount": null
+      },
+      "Cycle to work": {
+        "amount": null
+      },
+      "Company Car": {
+        "amount": null
+      },
+      "Childcare vouchers": {
+        "amount": null
+      },
+      "Lunch vouchers": {
+        "amount": null
+      }
+    },
+    "employment": {
+      "hoursInDayNotWorked": 9,
+      "standardWorkingPattern": null,
+      "fte": 100,
+      "type": null,
+      "flsaCode": null,
+      "actualWorkingPattern": {
+        "workingPatternType": "hourly",
+        "days": {
+          "sunday": 0,
+          "tuesday": 9,
+          "wednesday": 9,
+          "monday": 9,
+          "friday": 9,
+          "thursday": 9,
+          "saturday": 0
+        },
+        "hoursPerDay": 9,
+        "workingPatternId": 363430
+      },
+      "contract": "Full time",
+      "calendarId": null,
+      "salaryPayType": null,
+      "personalWorkingPatternType": null,
+      "workingPattern": null,
+      "activeEffectiveDate": "2024-08-01",
+      "weeklyHours": 45,
+      "siteWorkingPattern": {
+        "workingPatternType": "hourly",
+        "days": {
+          "sunday": 0,
+          "tuesday": 9,
+          "wednesday": 9,
+          "monday": 9,
+          "friday": 9,
+          "thursday": 9,
+          "saturday": 0
+        },
+        "hoursPerDay": 9,
+        "workingPatternId": 363430
+      }
+    },
+    "variable": {
+      "Executive bonus": {
+        "companyPercent": null,
+        "amount": null,
+        "paymentPeriod": null,
+        "individualPercent": null,
+        "departmentPercent": null
+      },
+      "Bonus": {
+        "companyPercent": null,
+        "amount": null,
+        "paymentPeriod": null,
+        "individualPercent": null,
+        "departmentPercent": null
+      },
+      "Commission": {
+        "companyPercent": null,
+        "amount": null,
+        "paymentPeriod": null,
+        "individualPercent": null,
+        "departmentPercent": null
+      }
+    }
+  },
+  "personal": {
+    "communication": {
+      "skypeUsername": null,
+      "slackUsername": null
+    }
+  },
+  "state": "uninvited",
+  "creationDateTime": "2024-06-27T08:56:36.315367",
+  "employee": {
+    "positionId": null,
+    "payrollManager": null,
+    "hrbp": null,
+    "itAdmin": null,
+    "jobLevelId": null,
+    "buddy": null
+  },
+  "work": {
+    "shortStartDate": "08-01",
+    "startDate": "2024-08-01",
+    "manager": null,
+    "workPhone": null,
+    "tenureDuration": null,
+    "durationOfEmployment": null,
+    "reportsToIdInCompany": null,
+    "employeeIdInCompany": null,
+    "reportsTo": null,
+    "workMobile": null,
+    "indirectReports": null,
+    "department": null,
+    "siteId": 2474159,
+    "tenureDurationYears": 0,
+    "tenureYears": null,
+    "isManager": false,
+    "title": null,
+    "site": "New York (Demo)",
+    "originalStartDate": "2024-08-01",
+    "activeEffectiveDate": "2024-08-01",
+    "directReports": null,
+    "secondLevelManager": null,
+    "daysOfPreviousService": 0,
+    "yearsOfService": 0
+  },
+  "avatarUrl": null,
+  "secondName": null,
+  "about": {
+    "foodPreferences": [],
+    "socialData": {
+      "linkedin": null,
+      "twitter": null,
+      "facebook": null
+    },
+    "superpowers": [],
+    "hobbies": [],
+    "about": null,
+    "avatar": "https://media-process.hibob.com/image/upload/b_rgb:E8D883/co_white,l_text:Arial_50_bold:WL,g_center/hibob/default-avatar/transparent_avatar.png?token=X19jbGRfdG9rZW5fXz1leHA9NDgzNDYyODAxNH5hY2w9KiUyZmhpYm9iJTJmZGVmYXVsdC1hdmF0YXIlMmZ0cmFuc3BhcmVudF9hdmF0YXIucG5nKn5obWFjPThlYWExNDdjOWEzNWQwZjg3ZmQ1YmJkZTRiYTA4ZjE1YzExZjYzNWQxMmVkNzRmZGE1NmIwZDU5MDg4YTJmOGE=&vendor=cloudinary"
+  },
+  "companyId": 631640,
+  "email": "kdoyle+test+4@pinpoint.dev",
+  "surname": "Lockman",
+  "home": {
+    "mobilePhone": null,
+    "privateEmail": null,
+    "privatePhone": null
+  },
+  "coverImageUrl": "https://media-process.hibob.com/image/upload/v1/hibob/public-image/cover/white_default_cover_image.png?token=X19jbGRfdG9rZW5fXz1leHA9MTczMDgwMTQ2NX5hY2w9KiUyZmhpYm9iJTJmcHVibGljLWltYWdlJTJmY292ZXIlMmZ3aGl0ZV9kZWZhdWx0X2NvdmVyX2ltYWdlLnBuZyp+aG1hYz0wMDQ5MGJkNjQ5N2Y2ZDQ5OGY5ZTVmZTMxYTYwNTI1NDA4ZTVhOGE4YWFmMWU3ZTZjYzVkNzlmNzVjODA3YTkw&vendor=cloudinary",
+  "id": "3399555321042042990",
+  "firstName": "Williams"
+}

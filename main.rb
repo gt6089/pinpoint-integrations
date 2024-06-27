@@ -4,31 +4,39 @@ require 'dotenv/load'
 require 'json'
 require 'debug'
 
-post '/application-hired' do
+post '/pinpoint/application-hired' do
   event_data = JSON.parse(request.body.read)["data"]
   application_id = event_data["application"]["id"]
 
-  ProcessApplicationHired.new(application_id).run
+  ProcessPinpointApplicationHired.new(application_id).run
 
   return 200
 end
 
-class ProcessApplicationHired
+class ProcessPinpointApplicationHired
   PINPOINT_API_URL = "developers-test.pinpointhq.com/api/v1"
   HIBOB_API_URL = "api.hibob.com/v1"
 
-  attr_reader :application_id
+  attr_reader :pinpoint_application_id, :hibob_employee_id, :errors
 
   def initialize(application_id)
-    @application_id = application_id
+    @pinpoint_application_id = application_id
     @pinpoint_application = nil
+    @hibob_employee_id = nil
+    @errors = []
   end
 
   def run
+    puts "Processing application hired event for Pinpoint application #{pinpoint_application_id}"
+
     fetch_pinpoint_application
     create_hibob_employee
-    # update_hibob_employee_with_cv
-    # update_pinpoint_application
+    upload_employee_cv
+    update_pinpoint_application
+
+    puts "Finished processing application hired event for Pinpoint application #{pinpoint_application_id}"
+  rescue => error
+    puts "Run failed with errors", @errors
   end
 
   private
@@ -39,21 +47,25 @@ class ProcessApplicationHired
       headers: {
         'X-API-KEY': ENV['PINPOINT_API_KEY']
       }
-    )
+    ) do |conn|
+      conn.request :json
+      conn.response :raise_error
+    end
   end
 
   def fetch_pinpoint_application
-    puts "Fetching Pinpoint application #{application_id}"
+    puts "Fetching Pinpoint application #{pinpoint_application_id}"
 
-    response = pinpoint_api.get("applications/#{application_id}") do |req|
+    response = pinpoint_api.get("applications/#{pinpoint_application_id}") do |req|
       req.params["extra_fields[applications]"] = "attachments"
     end
 
     data = JSON.parse(response.body)["data"]
 
     @pinpoint_application = PinpointApplication.new(data)
-
-    true
+  rescue => error
+    @errors << { message: "Failed to fetch Pinpoint application", error: error }
+    raise
   end
 
   def hibob_api
@@ -63,7 +75,10 @@ class ProcessApplicationHired
         'Authorization': "Basic #{hibob_token}",
         'Content-Type': 'application/json'
       }
-    )
+    ) do |conn|
+      conn.request :json
+      conn.response :raise_error
+    end
   end
 
   def hibob_token
@@ -76,10 +91,12 @@ class ProcessApplicationHired
   end
 
   def create_hibob_employee
-    employee_data = {
+    puts "Creating Hibob employee for Pinpoint application #{pinpoint_application_id}"
+
+    request_data = {
       firstName: @pinpoint_application.first_name,
       surname: @pinpoint_application.last_name,
-      email: 'kdoyle+test@pinpoint.dev',
+      email: 'kdoyle+test+final@pinpoint.dev',
       work: {
         site: 'New York (Demo)',
         startDate: '2024-08-01',
@@ -87,10 +104,70 @@ class ProcessApplicationHired
     }
 
     response = hibob_api.post('people') do |req|
-      req.body = JSON.generate(employee_data)
+      req.body = request_data
     end
 
-    binding.break
+    response_data = JSON.parse(response.body)
+
+    @hibob_employee_id = response_data["id"]
+
+    puts "Successfully created Hibob employee with id #{@hibob_employee_id}"
+  rescue => error
+    @errors << { message: "Failed to create Hibob employee", error: error }
+    raise
+  end
+
+  def upload_employee_cv
+    puts "Uploading CV for Hibob employee #{@hibob_employee_id}"
+
+    request_data = {
+      documentName: @pinpoint_application.cv_name,
+      documentUrl: @pinpoint_application.cv_url
+    }
+
+    response = hibob_api.post("docs/people/#{@hibob_employee_id}/shared") do |req|
+      req.body = request_data
+    end
+
+    puts "Successfully uploaded CV for Hibob employee #{@hibob_employee_id}"
+  rescue => error
+    @errors << { message: "Failed to upload CV for Hibob employee", error: error }
+    raise
+  end
+
+  def update_pinpoint_application
+    puts "Updating Pinpoint application #{@pinpoint_application.id}"
+
+    request_data = {
+      data: {
+        type: "comments",
+        attributes: {
+          body_text: "Record created with ID: #{@hibob_employee_id}"
+        },
+        relationships: {
+          commentable: {
+            data: {
+              type: "applications",
+              id: "#{@pinpoint_application.id}"
+            }
+          }
+        }
+      }
+    }
+
+    response = pinpoint_api.post("comments") do |req|
+      req.body = request_data
+    end
+
+    puts "Successfully updated Pinpoint application #{@pinpoint_application.id}"
+  rescue => error
+    errors << { message: "Failed to update Pinpoint application", error: error }
+    raise
+  end
+
+  def get_fixture(api, action)
+    file_path = File.join(Sinatra::Application.settings.root, "fixtures/#{api}", "#{action}.json")
+    json_data = File.read(file_path)
   end
 end
 
@@ -99,6 +176,10 @@ class PinpointApplication
 
   def initialize(data)
     @data = data
+  end
+
+  def id
+    data["id"]
   end
 
   def first_name
@@ -113,37 +194,21 @@ class PinpointApplication
     data["attributes"]["email"]
   end
 
+  def cv_name
+    cv["filename"]
+  end
+
+  def cv_url
+    cv["url"]
+  end
+
   def cv
-    get_pdf_cv(data["attachments"])
+    get_pdf_cv(data["attributes"]["attachments"])
   end
 
   private
 
   def get_pdf_cv(attachment_data)
-    attachment_data.filter(attachment => attachment["context"] === "pdf_cv")
+    attachment_data.select {|attachment| attachment["context"] === "pdf_cv" }[0]
   end
 end
-
-
-
-# fetch Application from Pinpoint
-  # interested in:
-    # firstName
-    # surname
-    # email
-    # CV
-# create Employee record in Hibob
-  # New York (Demo) work site
-  # Any future date for start
-# Update Hibob employee record with CV from application
-  # public document
-  # pdf_cv context
-# Create comment on Pinpoint application
-  # "Record has been created with ID: {hibob reference id}"
-
-
-# HiBob employee record create params
-  # firstName
-  # surname
-  # email
-  # work: { site: string, startDate: <date-in-future> }

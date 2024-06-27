@@ -1,0 +1,102 @@
+{
+  "data": {
+    "id": "8863807",
+    "type": "applications",
+    "attributes": {
+      "created_at": "2024-02-03T04:35:36+00:00",
+      "updated_at": "2024-04-18T06:04:29+00:00",
+      "hired_at": null,
+      "internal_candidate": true,
+      "job_id": "174766",
+      "locale": "en",
+      "stage_id": "1539024",
+      "rejected_at": null,
+      "phone_iso2": "US",
+      "start_on": null,
+      "is_demo": true,
+      "first_name": "Williams",
+      "last_name": "Lockman",
+      "email": "williams.lockman@pinpoint.dev",
+      "phone": "+17080521228",
+      "date_of_birth": "2003-10-20",
+      "linkedin_url": null,
+      "summary": "This is an example application designed to help demonstrate Pinpoint to the team at Developer Acme. Please completely disregard this application as it is for demonstrative purposes only and will be automatically deleted in due course.",
+      "address1": "4271 Kayleen Inlet",
+      "address2": "Imelda Corners",
+      "town": "Lake Bricemouth",
+      "country": "Lesotho",
+      "postcode": "40126",
+      "preferred_pronouns": "(They/Them/Theirs)",
+      "channel_source": "Careers site",
+      "full_name": "Williams Lockman",
+      "national_identifier": null,
+      "channel": "in_store",
+      "concealed": false,
+      "attachments": [
+        {
+          "context": "cv",
+          "filename": "tom_hacquoil.pdf",
+          "url": "https://pinpointhq.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBeDZhK0E9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--6a9cfa9457e57b0719c3f75de9aa960cce5227c0/tom_hacquoil.pdf"
+        },
+        {
+          "context": "pdf_cv",
+          "filename": "tom_hacquoil.pdf",
+          "url": "https://pinpointhq.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBeDZhK0E9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--6a9cfa9457e57b0719c3f75de9aa960cce5227c0/tom_hacquoil.pdf"
+        }
+      ]
+    },
+    "relationships": {
+      "job": {
+        "meta": {
+          "included": false
+        }
+      },
+      "stage": {
+        "meta": {
+          "included": false
+        }
+      },
+      "onboarding_application": {
+        "meta": {
+          "included": false
+        }
+      },
+      "offers": {
+        "meta": {
+          "included": false
+        }
+      },
+      "answers": {
+        "meta": {
+          "included": false
+        }
+      },
+      "custom_attributes": {
+        "meta": {
+          "included": false
+        }
+      },
+      "scorecard_ratings": {
+        "meta": {
+          "included": false
+        }
+      },
+      "scorecard_notes": {
+        "meta": {
+          "included": false
+        }
+      },
+      "scorecard_answers": {
+        "meta": {
+          "included": false
+        }
+      },
+      "comments": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}

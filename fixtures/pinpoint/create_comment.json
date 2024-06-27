@@ -1,0 +1,118 @@
+{
+  "data": {
+      "id": "3439210",
+      "type": "comments",
+      "attributes": {
+          "body_text": "Record created with ID: 123",
+          "commentable_id": "8863807",
+          "commentable_type": "Application",
+          "created_at": "2024-06-27T09:21:24+00:00",
+          "private_comment": false,
+          "updated_at": "2024-06-27T09:21:24+00:00",
+          "user_id": "95960"
+      },
+      "relationships": {
+          "user": {
+              "meta": {
+                  "included": false
+              }
+          },
+          "commentable": {
+              "data": {
+                  "type": "applications",
+                  "id": "8863807"
+              }
+          }
+      }
+  },
+  "included": [
+      {
+          "id": "8863807",
+          "type": "applications",
+          "attributes": {
+              "created_at": "2024-02-03T04:35:36+00:00",
+              "updated_at": "2024-04-18T06:04:29+00:00",
+              "hired_at": null,
+              "internal_candidate": true,
+              "job_id": "174766",
+              "locale": "en",
+              "stage_id": "1539024",
+              "rejected_at": null,
+              "phone_iso2": "US",
+              "start_on": null,
+              "is_demo": true,
+              "first_name": "Williams",
+              "last_name": "Lockman",
+              "email": "williams.lockman@pinpoint.dev",
+              "phone": "+17080521228",
+              "date_of_birth": "2003-10-20",
+              "linkedin_url": null,
+              "summary": "This is an example application designed to help demonstrate Pinpoint to the team at Developer Acme. Please completely disregard this application as it is for demonstrative purposes only and will be automatically deleted in due course.",
+              "address1": "4271 Kayleen Inlet",
+              "address2": "Imelda Corners",
+              "town": "Lake Bricemouth",
+              "country": "Lesotho",
+              "postcode": "40126",
+              "preferred_pronouns": "(They/Them/Theirs)",
+              "channel_source": "Careers site",
+              "full_name": "Williams Lockman",
+              "national_identifier": null,
+              "channel": "in_store",
+              "concealed": false
+          },
+          "relationships": {
+              "job": {
+                  "meta": {
+                      "included": false
+                  }
+              },
+              "stage": {
+                  "meta": {
+                      "included": false
+                  }
+              },
+              "onboarding_application": {
+                  "meta": {
+                      "included": false
+                  }
+              },
+              "offers": {
+                  "meta": {
+                      "included": false
+                  }
+              },
+              "answers": {
+                  "meta": {
+                      "included": false
+                  }
+              },
+              "custom_attributes": {
+                  "meta": {
+                      "included": false
+                  }
+              },
+              "scorecard_ratings": {
+                  "meta": {
+                      "included": false
+                  }
+              },
+              "scorecard_notes": {
+                  "meta": {
+                      "included": false
+                  }
+              },
+              "scorecard_answers": {
+                  "meta": {
+                      "included": false
+                  }
+              },
+              "comments": {
+                  "meta": {
+                      "included": false
+                  }
+              }
+          }
+      }
+  ],
+  "meta": {}
+}
